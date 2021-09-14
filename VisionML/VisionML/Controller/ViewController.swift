@@ -9,15 +9,21 @@ import UIKit
 import AVKit
 import Vision
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController {
 
+    //MARK: - interface properties.
+    @IBOutlet weak var confidenceLevelLbl: UILabel!
+    @IBOutlet weak var objectName: UILabel!
+    @IBOutlet weak var cameraView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUPCaptaureSession()
     }
     
-    
+    //TODO:-
     private func setUPCaptaureSession(){
       
         let captureSession = AVCaptureSession()
@@ -30,15 +36,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         captureSession.startRunning()
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        view.layer.addSublayer(previewLayer)
-        previewLayer.frame = view.frame
+        cameraView.layer.addSublayer(previewLayer)
+        previewLayer.frame = cameraView.frame
         
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
     }
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+}
+
+extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate{
+    
+    //TODO:-
+    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 //        print("frame:", Date())
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
@@ -61,14 +72,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print(firstObservation.identifier, firstObservation.confidence)
 
             DispatchQueue.main.async {
-                //self.identifierLabel.text = "\(firstObservation.identifier) \(firstObservation.confidence * 100)"
+                self.objectName.text = "\(firstObservation.identifier)"
+                self.confidenceLevelLbl.text = " \(firstObservation.confidence * 100)"
             }
-
         }
-
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
-
-
+    
 }
 
