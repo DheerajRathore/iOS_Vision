@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraView.layer.addSublayer(previewLayer)
         previewLayer.frame = cameraView.frame
+        print("camera frame :========>", cameraView.frame)
         
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
@@ -72,8 +73,8 @@ extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate{
             print(firstObservation.identifier, firstObservation.confidence)
 
             DispatchQueue.main.async {
-                self.objectName.text = "\(firstObservation.identifier)"
-                self.confidenceLevelLbl.text = " \(firstObservation.confidence * 100)"
+                self.objectName.text = "Object : \(firstObservation.identifier)"
+                self.confidenceLevelLbl.text = "confidence level : \(firstObservation.confidence * 100)"
             }
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])

@@ -13,6 +13,7 @@
 		A040329726ECD8B400478B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A040329526ECD8B400478B14 /* LaunchScreen.storyboard */; };
 		A04032A226ECD8B400478B14 /* VisionMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04032A126ECD8B400478B14 /* VisionMLTests.swift */; };
 		A04032AD26ECD8B500478B14 /* VisionMLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04032AC26ECD8B500478B14 /* VisionMLUITests.swift */; };
+		A044713726F113C400EC27ED /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A044713626F113C400EC27ED /* Resnet50.mlmodel */; };
 		A0D50B9D26EF7F9500355C64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D50B9B26EF7F9500355C64 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		A04032A826ECD8B500478B14 /* VisionMLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionMLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04032AC26ECD8B500478B14 /* VisionMLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionMLUITests.swift; sourceTree = "<group>"; };
 		A04032AE26ECD8B500478B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A044713626F113C400EC27ED /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		A0D50B9B26EF7F9500355C64 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				A0D50B9A26EF7F9500355C64 /* Controller */,
 				A0D50B9926EF7F9500355C64 /* Model */,
 				A0D50B9C26EF7F9500355C64 /* ViewModel */,
+				A044713426F113C400EC27ED /* Resources */,
 				A040328A26ECD8B200478B14 /* AppDelegate.swift */,
 				A040329026ECD8B200478B14 /* Main.storyboard */,
 				A040329326ECD8B400478B14 /* Assets.xcassets */,
@@ -125,6 +128,22 @@
 				A04032AE26ECD8B500478B14 /* Info.plist */,
 			);
 			path = VisionMLUITests;
+			sourceTree = "<group>";
+		};
+		A044713426F113C400EC27ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A044713526F113C400EC27ED /* CoreMLModel */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A044713526F113C400EC27ED /* CoreMLModel */ = {
+			isa = PBXGroup;
+			children = (
+				A044713626F113C400EC27ED /* Resnet50.mlmodel */,
+			);
+			path = CoreMLModel;
 			sourceTree = "<group>";
 		};
 		A0D50B9926EF7F9500355C64 /* Model */ = {
@@ -280,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D50B9D26EF7F9500355C64 /* ViewController.swift in Sources */,
+				A044713726F113C400EC27ED /* Resnet50.mlmodel in Sources */,
 				A040328B26ECD8B200478B14 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,14 +476,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = U9RJW454WR;
 				INFOPLIST_FILE = VisionML/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sample.VisionML;
+				PRODUCT_BUNDLE_IDENTIFIER = paybackindia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "PAYBACK INDIA DEV";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -474,14 +498,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = U9RJW454WR;
 				INFOPLIST_FILE = VisionML/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sample.VisionML;
+				PRODUCT_BUNDLE_IDENTIFIER = paybackindia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "PAYBACK INDIA DEV";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
